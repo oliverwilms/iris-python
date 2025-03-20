@@ -19,15 +19,17 @@ chrome_options = Options()
 chrome_options.add_argument("--start-maximized")
 #chrome_options.add_argument("--user-data-dir=/tmp/chrome-user-data")
 #chrome_options.add_argument("--no-sandbox")
-driver = webdriver.Chrome(service=service, options=chrome_options)
+#driver = webdriver.Chrome(service=service, options=chrome_options)
 
 def test():
     note = ''
-    print("test")
+    print("test1")
     time.sleep(1)
     urlTest = "https://www.python.org/downloads/windows/"
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     driver.get(urlTest)
-    time.sleep(5)
+    print("test2")
+    time.sleep(2)
     pdf_file = "C:\\InterSystems\\Cache\\CSP\\medkaz\\pdf\\test.pdf"
     pdf = driver.execute_cdp_cmd("Page.printToPDF", {"printBackground": True})
     pdf_data = base64.b64decode(pdf["data"])
