@@ -13,7 +13,7 @@ prepped = req.prepare()
 prepped.body = '{"model": "llama3.2", "messages": [{"role": "system", "content": "$question"}, {"role": "user", "content": "$prompt"}]}'
 
 # do something with prepped.headers
-del prepped.headers['Content-Type']
+#del prepped.headers['Content-Type']
 
 r = s.send(prepped,
 
