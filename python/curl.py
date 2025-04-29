@@ -30,8 +30,8 @@ body = buffer.getvalue().decode('utf-8')
 
 # Check if it was successful
 if http_code == 200:
-print("Success:")
-print(body)
+    print("Success:")
+    print(body)
 else:
-print("Error:")
-print(http_code)
+    print("Error:")
+    print(http_code)
