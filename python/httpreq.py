@@ -1,7 +1,8 @@
 import json
 import requests
 
-r = requests.get('https://httpbin.org/stream/20', stream=True)
+url = "http://localhost:11435/api/chat"
+r = requests.get('http://localhost:11435/api/chat', stream=True)
 
 for line in r.iter_lines():
 
