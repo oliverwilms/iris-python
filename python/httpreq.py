@@ -20,7 +20,7 @@ prepped.body = '{"model": "llama3.2", "messages": [{"role": "system", "content":
 #del prepped.headers['Content-Type']
 r = s.send(prepped, **settings)
 
-answer = ''
+answer = []
 
 for line in r.iter_lines():
 
@@ -32,5 +32,5 @@ for line in r.iter_lines():
         content = message["content"]
         answer.append(content)
 
-print(answer)
+print(str(answer))
 
