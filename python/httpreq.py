@@ -2,7 +2,7 @@ import json
 from requests import Request, Session
 
 url = "http://localhost:11435/api/chat"
-data = ""
+data = '{"model": "llama3.2", "messages": [{"role": "system", "content": "$question"}, {"role": "user", "content": "$prompt"}]}'
 
 s = Session()
 
