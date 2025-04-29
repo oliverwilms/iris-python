@@ -26,4 +26,7 @@ for line in r.iter_lines():
     if line:
         decoded_line = line.decode('utf-8')
         y = (json.loads(decoded_line))
-        print(y["message"])
+        message = y["message"]
+        content = message["content"] 
+        print(content)
+
