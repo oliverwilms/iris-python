@@ -2,11 +2,11 @@ import json
 from requests import Request, Session
 
 url = "http://localhost:11435/api/chat"
-#r = requests.get('http://localhost:11435/api/chat', stream=True)
+data = ""
 
 s = Session()
 
-req = Request('POST', url, data=data, headers=headers)
+req = Request('POST', url, data=data,)
 prepped = req.prepare()
 
 # do something with prepped.body
@@ -16,11 +16,7 @@ prepped.body = '{"model": "llama3.2", "messages": [{"role": "system", "content":
 del prepped.headers['Content-Type']
 
 r = s.send(prepped,
-    stream=stream,
-    verify=verify,
-    proxies=proxies,
-    cert=cert,
-    timeout=timeout
+
 )
 
 for line in r.iter_lines():
