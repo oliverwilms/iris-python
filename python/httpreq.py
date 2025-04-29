@@ -20,6 +20,8 @@ prepped.body = '{"model": "llama3.2", "messages": [{"role": "system", "content":
 #del prepped.headers['Content-Type']
 r = s.send(prepped, **settings)
 
+answer = ''
+
 for line in r.iter_lines():
 
     # filter out keep-alive new lines
@@ -27,6 +29,8 @@ for line in r.iter_lines():
         decoded_line = line.decode('utf-8')
         y = (json.loads(decoded_line))
         message = y["message"]
-        content = message["content"] 
-        print(content)
+        content = message["content"]
+        answer.append(content)
+
+print(answer)
 
