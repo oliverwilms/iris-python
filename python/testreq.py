@@ -16,10 +16,11 @@ question_data = read_file(question_path)
 print(question_data)
 url = "http://localhost:53795/api/test/Service"
 data = '{"model": "llama3.2", "messages": [{"role": "system", "content": "$question"}, {"role": "user", "content": "$prompt"}]}'
-
+data1 = data.replace("$question",question_data)
+data2 = data1.replace($prompt",prompt_data)
 s = Session()
 
-req = Request('POST', url, data=data,)
+req = Request('POST', url, data=data2,)
 #prepped = req.prepare()
 prepped = s.prepare_request(req)
 
