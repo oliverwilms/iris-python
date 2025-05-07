@@ -1,6 +1,13 @@
 import json
 from requests import Request, Session
 
+def read_file(file_path: str):
+    """
+    Read some text from a text file.
+    """
+    with open(file_path, "r") as f:
+        return f.read()
+
 url = "http://localhost:53795/api/test/Service"
 data = '{"model": "llama3.2", "messages": [{"role": "system", "content": "$question"}, {"role": "user", "content": "$prompt"}]}'
 
