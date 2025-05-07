@@ -8,6 +8,12 @@ def read_file(file_path: str):
     with open(file_path, "r") as f:
         return f.read()
 
+prompt_path = "./prompt.txt"
+prompt_data = read_file(prompt_path)
+print({prompt_data})
+question_path = "./question.txt"
+question_data = read_file(question_path)
+print(question_data)
 url = "http://localhost:53795/api/test/Service"
 data = '{"model": "llama3.2", "messages": [{"role": "system", "content": "$question"}, {"role": "user", "content": "$prompt"}]}'
 
