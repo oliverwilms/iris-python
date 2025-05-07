@@ -18,6 +18,7 @@ url = "http://localhost:53795/api/test/Service"
 data = '{"model": "llama3.2", "messages": [{"role": "system", "content": "$question"}, {"role": "user", "content": "$prompt"}]}'
 data1 = data.replace("$question",question_data)
 data2 = data1.replace("$prompt",prompt_data)
+print(data2)
 s = Session()
 
 req = Request('POST', url, data=data2,)
