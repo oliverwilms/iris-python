@@ -29,7 +29,8 @@ prepped = s.prepare_request(req)
 settings = s.merge_environment_settings(prepped.url, {}, None, None, None)
 
 # do something with prepped.body
-prepped.body = '{"model": "llama3.2", "messages": [{"role": "system", "content": "$question"}, {"role": "user", "content": "$prompt"}]}'
+# prepped.body = '{"model": "llama3.2", "messages": [{"role": "system", "content": "$question"}, {"role": "user", "content": "$prompt"}]}'
+prepped.body = data2
 
 # do something with prepped.headers
 #del prepped.headers['Content-Type']
