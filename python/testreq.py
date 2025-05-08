@@ -6,7 +6,10 @@ def read_file(file_path: str):
     Read some text from a text file.
     """
     with open(file_path, "r") as f:
-        return f.read().replace("\n"," ")
+        file_data = f.read()
+        original_string = file_data.replace("\n", " ")
+        modified_string = re.sub(r'"', "'", original_string)
+        return modified_string
 
 prompt_path = "./prompt.txt"
 prompt_data = read_file(prompt_path)
