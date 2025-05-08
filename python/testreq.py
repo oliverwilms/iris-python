@@ -1,4 +1,5 @@
 import json
+import re
 from requests import Request, Session
 
 def read_file(file_path: str):
