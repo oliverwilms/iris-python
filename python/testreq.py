@@ -15,7 +15,7 @@ def read_file(file_path: str):
 prompt_path = "./prompt.txt"
 prompt_data = read_file(prompt_path)
 print({prompt_data})
-question_path = "./question.txt"
+question_path = "/home/ec2-user/metadata/data/prompts/medical_progress_notes_prompt.txt"
 question_data = read_file(question_path)
 print(question_data)
 url = "http://localhost:53795/api/test/Service"
