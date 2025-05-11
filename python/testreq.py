@@ -25,7 +25,7 @@ data2 = data1.replace("$prompt",prompt_data)
 print(data2)
 s = Session()
 url2 = "http://localhost:11435/api/chat"
-req = Request('POST', url1, data=data2,)
+req = Request('POST', url2, data=data2,)
 #prepped = req.prepare()
 prepped = s.prepare_request(req)
 
