@@ -38,11 +38,20 @@ prepped.body = data2
 
 # do something with prepped.headers
 #del prepped.headers['Content-Type']
-r = s.send(prepped, **settings)
+#r = s.send(prepped, **settings)
+timeout = 300
+resp = s.send(prepped,
+    stream=stream,
+    verify=verify,
+    proxies=proxies,
+    cert=cert,
+    timeout=timeout
+)
 
 answer = []
 
-for line in r.iter_lines():
+#for line in r.iter_lines():
+for line in resp.iter_lines():
 
     # filter out keep-alive new lines
     if line:
