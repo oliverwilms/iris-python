@@ -41,10 +41,10 @@ prepped.body = data2
 #r = s.send(prepped, **settings)
 timeout = 300
 resp = s.send(prepped,
-    stream=stream,
-    verify=verify,
-    proxies=proxies,
-    cert=cert,
+#    stream=stream,
+#    verify=verify,
+#    proxies=proxies,
+#    cert=cert,
     timeout=timeout
 )
 
