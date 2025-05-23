@@ -14,7 +14,7 @@ for i in range(0, numOfPages):
     print("Page Number: " + str(i))
     print("- - - - - - - - - - - - - - - - - - - -")
     pageObj = pdfReader.pages[i]
-    print(pageObj.extractText())
+    print(pageObj.extract_text())
     print("- - - - - - - - - - - - - - - - - - - -")
 
 # Close the PDF file object
