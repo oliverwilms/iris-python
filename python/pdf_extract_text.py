@@ -6,11 +6,6 @@ pdfFile = open('visitSummary.pdf', 'rb')
 # Create a PdfReader object to read the file
 pdfReader = PdfReader(pdfFile)
 
-# Print document information
-print("PDF File name: " + str(pdfReader.getDocumentInfo().title))
-print("PDF File created by: " + str(pdfReader.getDocumentInfo().creator))
-print("- - - - - - - - - - - - - - - - - - - -")
-
 # Get the number of pages in the PDF
 numOfPages = len(pdfReader.pages)
 
