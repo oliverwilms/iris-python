@@ -16,11 +16,11 @@ numOfPages = pdfReader.getNumPages()
 
 # Loop through all the pages and extract text
 for i in range(0, numOfPages):
-print("Page Number: " + str(i))
-print("- - - - - - - - - - - - - - - - - - - -")
-pageObj = pdfReader.getPage(i)
-print(pageObj.extractText())
-print("- - - - - - - - - - - - - - - - - - - -")
+    print("Page Number: " + str(i))
+    print("- - - - - - - - - - - - - - - - - - - -")
+    pageObj = pdfReader.getPage(i)
+    print(pageObj.extractText())
+    print("- - - - - - - - - - - - - - - - - - - -")
 
 # Close the PDF file object
 pdfFile.close()
