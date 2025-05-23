@@ -13,7 +13,7 @@ numOfPages = len(pdfReader.pages)
 for i in range(0, numOfPages):
     print("Page Number: " + str(i))
     print("- - - - - - - - - - - - - - - - - - - -")
-    pageObj = pdfReader.getPage(i)
+    pageObj = pdfReader.pages[i]
     print(pageObj.extractText())
     print("- - - - - - - - - - - - - - - - - - - -")
 
