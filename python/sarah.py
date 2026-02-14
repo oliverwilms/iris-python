@@ -105,3 +105,52 @@ st.write("Enter the name of your city to display the current air quality.")  # I
 
 # User input for the city name
 city = st.text_input("City", "Enter the name of your City (e.g. Shanghai)")
+
+# Button to trigger the API call and display the results
+if st.button("Retrieve air quality"):
+    # Get air quality data for the entered city
+    air_quality_data = get_air_quality(city)
+    
+    # Check if data was successfully retrieved
+    if air_quality_data:
+        aqi = air_quality_data['aqi']  # Get the Air Quality Index (AQI)
+        st.subheader(f"Air Quality Index for: {city} and Air Quality Components")  # Display AQI
+        
+        # Define the Air Quality Index widget HTML inside the if block
+        widget_html = f"""
+        <div style="width: 300px; height: 200px;">
+        <script type="text/javascript" charset="utf-8">
+          (function (w, d, t, f) {{
+            w[f] = w[f] || function (c, k, n) {{
+              s = w[f], k = s['k'] = (s['k'] || (k ? ('&k=' + k) : '')); 
+              s['c'] = c = (c instanceof Array) ? c : [c]; 
+              s['n'] = n = n || 0; 
+              L = d.createElement(t), e = d.getElementsByTagName(t)[0]; 
+              L.async = 1; L.src = '//feed.aqicn.org/feed/' + (c[n].city) + '/' + (c[n].lang || '') + '/feed.v1.js?n=' + n + k; 
+              e.parentNode.insertBefore(L, e);
+            }};
+          }})(window, document, 'script', '_aqiFeed');
+        </script>
+
+        <span id="city-aqi-container"></span>
+        <script type="text/javascript" charset="utf-8">
+          _aqiFeed({{
+            container: "city-aqi-container",
+            city: "{city.lower()}",
+            display: "%details"  # Display detailed AQI info
+          }});
+        </script>
+        </div>
+        """
+
+        # Display the Air Quality Index widget for the selected city
+        components.html(widget_html, height=260)
+        
+        # Check if air quality components (like PM2.5, CO2, etc.) are available
+        if 'iaqi' in air_quality_data:
+            # Extract the components and their concentrations
+            components_data = {key: value['v'] for key, value in air_quality_data['iaqi'].items()}
+            # Visualize the air quality components using a bar chart
+            visualize_air_quality(components_data)
+        else:
+            st.write("No air quality components available.")  # If no components are available
