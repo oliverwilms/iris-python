@@ -98,3 +98,10 @@ def visualize_air_quality(components):
         st.plotly_chart(fig)
     else:
         st.write("No air quality components available.")  # Handle if no data is present
+
+# Streamlit App Layout
+st.title("City Air Quality Monitoring")  # App title
+st.write("Enter the name of your city to display the current air quality.")  # Instructions for the user
+
+# User input for the city name
+city = st.text_input("City", "Enter the name of your City (e.g. Shanghai)")
