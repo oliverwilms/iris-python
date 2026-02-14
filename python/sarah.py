@@ -27,6 +27,7 @@ st.markdown("""
         color: black;
         border: 2px solid #666666;
         padding: 10px 24px;
+        
         font-size: 16px;
         cursor: pointer;
         border-radius: 4px;
@@ -70,3 +71,30 @@ def get_air_quality(city):
     else:
         st.error(f"Error when retrieving air quality data: {data['data']}")
         return None  # Return None if there's an error
+
+# Function for visualizing the air quality components using Plotly
+def visualize_air_quality(components):
+    # Check if the air quality components are available
+    if components:
+        labels = list(components.keys())  # Extract component names
+        values = list(components.values())  # Extract corresponding values
+        
+        # Create a bar chart using Plotly
+        fig = px.bar(x=labels, y=values, labels={'x':'Components', 'y':'Concentration (μg/m³)'})
+        
+        # Update the layout with customized style
+        fig.update_layout(
+            title=dict(text="Air Quality Components", font=dict(color="black")),  # Title in black
+            xaxis_title="Component",  # X-axis label
+            yaxis_title="Concentration (μg/m³)",  # Y-axis label
+            plot_bgcolor="#fff",  # White background for the plot area
+            paper_bgcolor="#fff",  # White background for the entire chart
+            font=dict(color="black"),  # Font color for labels and titles
+            xaxis=dict(title_font=dict(size=14, color="black"), tickfont=dict(color="black")),  # Black X-axis labels
+            yaxis=dict(title_font=dict(size=14, color="black"), tickfont=dict(color="black"))   # Black Y-axis labels
+        )
+        
+        # Display the Plotly chart in Streamlit
+        st.plotly_chart(fig)
+    else:
+        st.write("No air quality components available.")  # Handle if no data is present
