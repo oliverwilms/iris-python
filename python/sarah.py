@@ -51,3 +51,22 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
+
+# World Air Quality API key (replace with your own key)
+api_key = 'Your Key'
+
+# Function to retrieve air quality data from the API
+def get_air_quality(city):
+    # Construct the API request URL using the city and API key
+    url = f'http://api.waqi.info/feed/{city}/?token={api_key}'
+    response = requests.get(url)  # Send the request
+    
+    # Process the API response and convert it to JSON format
+    data = response.json()
+    
+    # Check if the request was successful (status: 'ok')
+    if data['status'] == 'ok':
+        return data['data']  # Return the air quality data if available
+    else:
+        st.error(f"Error when retrieving air quality data: {data['data']}")
+        return None  # Return None if there's an error
