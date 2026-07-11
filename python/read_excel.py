@@ -37,21 +37,21 @@ if __name__ == "__main__":
         print(e)
 
     # 2️⃣ Read SPECIFIC sheets by name
-    try:
-        selected_sheets_data = read_excel_sheets(excel_file, sheets=["Sheet1", "Sheet3"])
-        print("\n=== Selected Sheets ===")
-        for sheet, df in selected_sheets_data.items():
-            print(f"\nSheet: {sheet}")
-            print(df.head())
-    except Exception as e:
-        print(e)
+#    try:
+#        selected_sheets_data = read_excel_sheets(excel_file, sheets=["Sheet1", "Sheet3"])
+#        print("\n=== Selected Sheets ===")
+#        for sheet, df in selected_sheets_data.items():
+#            print(f"\nSheet: {sheet}")
+#            print(df.head())
+#    except Exception as e:
+#        print(e)
 
     # 3️⃣ Read SPECIFIC sheets by index (0-based)
-    try:
-        index_sheets_data = read_excel_sheets(excel_file, sheets=[0, 2])
-        print("\n=== Sheets by Index ===")
-        for sheet, df in index_sheets_data.items():
-            print(f"\nSheet: {sheet}")
-            print(df.head())
-    except Exception as e:
-        print(e)
+#    try:
+#        index_sheets_data = read_excel_sheets(excel_file, sheets=[0, 2])
+#        print("\n=== Sheets by Index ===")
+#        for sheet, df in index_sheets_data.items():
+#            print(f"\nSheet: {sheet}")
+#            print(df.head())
+#    except Exception as e:
+#        print(e)
