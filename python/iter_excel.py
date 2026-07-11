@@ -2,11 +2,10 @@ import openpyxl
 import os
 import sys
 
-def iterate_excel_cells(file_path, sheet_name=None):
+def iterate_excel_all_sheets(file_path):
     """
-    Iterates over each cell in the given Excel sheet and prints its coordinates and value.
+    Iterates over all sheets in an Excel file and prints non-empty cells.
     :param file_path: Path to the Excel file (.xlsx)
-    :param sheet_name: Optional sheet name. If None, uses the active sheet.
     """
     try:
         # Validate file existence
@@ -20,18 +19,21 @@ def iterate_excel_cells(file_path, sheet_name=None):
         # Load workbook
         workbook = openpyxl.load_workbook(file_path, data_only=True)
 
-        # Select sheet
-        if sheet_name:
-            if sheet_name not in workbook.sheetnames:
-                raise ValueError(f"Sheet '{sheet_name}' not found in workbook.")
+        # Loop through all sheets
+        for sheet_name in workbook.sheetnames:
             sheet = workbook[sheet_name]
-        else:
-            sheet = workbook.active
+            print(f"\n--- Sheet: {sheet_name} ---")
 
-        # Iterate over all rows and columns
-        for row in sheet.iter_rows():
-            for cell in row:
-                print(f"Cell {cell.coordinate}: {cell.value}")
+            # Iterate over all rows and cells
+            for row in sheet.iter_rows():
+                for cell in row:
+                    # Skip empty cells (None or empty string after stripping)
+                    if cell.value is None:
+                        continue
+                    if isinstance(cell.value, str) and cell.value.strip() == "":
+                        continue
+
+                    print(f"Cell {cell.coordinate}: {cell.value}")
 
     except Exception as e:
         print(f"Error: {e}")
@@ -40,8 +42,5 @@ def iterate_excel_cells(file_path, sheet_name=None):
 
 if __name__ == "__main__":
     # Example usage
-    # Replace with your file path and optional sheet name
     excel_file = r"C:\Users\olive\OneDrive\12NEW\Miles_2026.xlsx"
-    sheet_to_read = None  # or "Sheet1"
-
-    iterate_excel_cells(excel_file, sheet_to_read)
+    iterate_excel_all_sheets(excel_file)
